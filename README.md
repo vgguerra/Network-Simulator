@@ -1,37 +1,36 @@
 ```mermaid
 classDiagram
     
-    class Ip{
+    class Dispositivos{
         <<Abstract>>
         String ip
+        String macAddress
     }
     
     class Comutador{
         String[12] portas
-        Ip ip
     }
     
     class Roteador{
         String[3] rotas
-        String macAddress
+        String rotaPadrão
     }
     
     class Regras{
-        Ip ipOrigem
-        Ip ipDestino
-        String portaOrigem
-        String portaDestino
+        String ipOrigem
+        String ipDestino
+        int portaOrigem
+        int portaDestino
         String ação
     }
     
     class Firewall{
         ArrayList~Regras~ regras
-        Ip ip
     }
         
-Ip <|-- Comutador
-Ip <|-- Roteador
-Ip <|-- Firewall
-Ip <|-- Regras
+Dispositivos <|-- Comutador
+Dispositivos <|-- Roteador
+Dispositivos <|-- Firewall
+Firewall *-- Regras 
 ```
 
