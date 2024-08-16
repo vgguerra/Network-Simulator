@@ -1,4 +1,16 @@
 package engtelecom.poo.redes;
 
-public class Comutador {
+import java.util.ArrayList;
+
+public class Comutador extends Dispositivo {
+
+    private MacAddress[] macAddresses;
+
+    public Comutador(MacAddress mac, Ip ip){
+        super(ip, mac);
+        this.macAddresses = new MacAddress[12];
+    }
+
+
+
 }

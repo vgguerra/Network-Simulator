@@ -2,75 +2,40 @@
 classDiagram
     
     class MacAddress{
-        <<enumeration>>
-        A1
-        A2
-        A3
-        A4
-        B1
-        B2
-        B3
-        B4
-        R1
-        
-        - String macAddress
+        <<Enumeration>>
+        A1,A2,A3,A4,B1,B2,B3,B4,R
     }
-        
     
-    class Dispositivos{
+    class Ip{
+        <<Enumeration>>
+        IP1,IP2,IP3,IP4,IP5,IP6,IP7,IP8,IP9,IP10,IP11,IP12
+    }
+    
+    class Dispositivo{
         <<Abstract>>
-        String ip
-        MacAddress macAddress
-    }
+        - MacAddres mac
+        - Ip ip
+    }        
     
-    class Comutador{
-        MacAddres[12] portas
-    }
-    
-    class Roteador{
-        String[3] rotas
-        String rotaPadrão
-    }
-    
-    class Regra{
-        String ipOrigem
-        String ipDestino
-        int portaOrigem
-        int portaDestino
-        String ação
-    }
-    
-    class Firewall{
-        ArrayList~Regras~ regras
-
-        + criarRegra(String ipOrigem,String ipDestino,int portaOrigem,int portaDestino, String ação) boolean
-        + apagarRegra(int posicaoRegra) boolean
-        + listarRegras() String
-    }
-    
-    class Pacote{
-        String ipOrigem
-        String ipDestino
-        int portaOrigem
-        int portaDestino
-        String macDestino
-        String payload
-    }
-    
-    class App{
-        + listarPorTipo() String
-        + listarPorRede() String
-        + listarRotas() String
-    }
+   class Comutador{
+        ArrayList
+   }
+   
+   class Roteador{
+       
+   }
+   
+   class Firewall{
+       
+   }
+   
+   Dispositivo *-- MacAddress
+   Dispositivo *-- Ip
+   
+   Dispositivo <|-- Comutador
+   Dispositivo <|-- Roteador
+   Dispositivo <|-- Firewall
         
-Dispositivos <|-- Comutador
-Dispositivos <|-- Roteador
-Dispositivos <|-- Firewall
-Firewall *-- Regra
-Dispositivos *-- MacAddress
-App *-- Comutador
-App *-- Firewall
-App *-- Roteador
-App *-- Pacote
+
 ```
 
