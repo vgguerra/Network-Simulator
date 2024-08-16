@@ -28,16 +28,24 @@ public class Firewall extends Dispositivo {
      * Método que irá adicionar uma nova regra a tabela de regras
      * @param regras Regras
      */
-    public void addRegras(Regras regras) {
+    public void addRule(Regras regras) {
         this.regras.add(regras);
     }
 
     /**
+     * Método que irá apagar uma regra da lista de regras do firewall
+     * @param index int
+     */
+    public void deleteRule(int index){
+        this.regras.remove(index);
+    }
+
+    /**
      * Método que irá retornar uma determinada regra
-     * @param index
+     * @param index int
      * @return Regras
      */
-    public Regras getRegras(int index) {
+    public Regras getRule(int index) {
         return this.regras.get(index);
     }
 
@@ -45,7 +53,7 @@ public class Firewall extends Dispositivo {
      * Método que irá
      * @return int
      */
-    public int getNumRegras() {
+    public int getNumRules() {
         return this.regras.size();
     }
 

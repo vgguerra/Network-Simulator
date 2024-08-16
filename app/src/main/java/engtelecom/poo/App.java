@@ -84,8 +84,16 @@ public class App {
        topologia.createRule(ipOrigem, ipDestino, portaOrigem, portaDestino, acao);
     }
 
+    /**
+     * Método que irá apagar uma regra do firewall
+     * @param index
+     */
     public void deleteRule(int index){
-        topologia.
+        topologia.deleteRule(index);
+    }
+
+    public void simulatePacket(String ipOrigem, String ipDestino,int portaOrigem, int portaDestino,String macAddres,String payload){
+
     }
 
     public static void main(String[] args) {
@@ -137,6 +145,20 @@ public class App {
                     String acao = sc.nextLine();
                     app.createRule(ipOrigem,ipDestino,portaOrigem,portaDestino,acao);
                     break;
+
+                case 6:
+                    System.out.println("------------------------------------");
+                    System.out.print("Digite qual a regra que você deseja apagar: ");
+                    app.listRules();
+                    try{
+                        int index = sc.nextInt() - 1;
+                        sc.nextLine();
+                        app.deleteRule(index);
+                        System.out.println("Regra deletada");
+                    } catch (IndexOutOfBoundsException e){
+                        System.err.println("A regra selecionada não existe!");
+                    }
+                    System.out.println("------------------------------------");
             }
         }
     }

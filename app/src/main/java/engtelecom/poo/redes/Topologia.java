@@ -49,7 +49,7 @@ public class Topologia {
         this.roteador.addRota(1,Ip.IpC2,5);
         this.roteador.addRota(2,Ip.IpF,0);
 
-        this.firewall.addRegras(new Regras("5234","A2",80,8080,"Encaminhar"));
+        this.firewall.addRule(new Regras("5234","A2",80,8080,"Encaminhar"));
 
     }
 
@@ -151,7 +151,7 @@ public class Topologia {
      * @return Regras
      */
     public Regras getRules(int index){
-        return firewall.getRegras(index);
+        return firewall.getRule(index);
     }
 
     /**
@@ -159,15 +159,27 @@ public class Topologia {
      * @return int
      */
     public int getNumRules(){
-        return this.firewall.getNumRegras();
+        return this.firewall.getNumRules();
     }
 
-    public void createRule(String ipOrigem, String ipDestino,int portOrigem, int portDestino,String acao){
-        firewall.addRegras(new Regras(ipOrigem,ipDestino,portOrigem,portDestino,acao));
+    /**
+     * Método que irá criar uma nova regra do firewall
+     * @param ipOrigem String
+     * @param ipDestino String
+     * @param portaOrigem int
+     * @param portaDestino int
+     * @param acao String
+     */
+    public void createRule(String ipOrigem, String ipDestino,int portaOrigem, int portaDestino,String acao){
+        firewall.addRule(new Regras(ipOrigem,ipDestino,portaOrigem,portaDestino,acao));
     }
 
+    /**
+     * Método que irá deletear uma regra do firewall
+     * @param index int
+     */
     public void deleteRule(int index){
-        firewall.
+        this.firewall.deleteRule(index);
     }
 
 }
