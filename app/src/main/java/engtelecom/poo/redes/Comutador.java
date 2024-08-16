@@ -11,6 +11,8 @@ public class Comutador extends Dispositivo {
         this.macAddresses = new MacAddress[12];
     }
 
+    public void add(int indice){
 
+    }
 
 }
