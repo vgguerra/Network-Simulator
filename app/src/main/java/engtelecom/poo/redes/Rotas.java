@@ -32,6 +32,6 @@ public class Rotas {
 
     @Override
     public String toString() {
-        return ip+ " " + portaSaida;
+        return "IP: "+ ip + " - Porta de saída associada: " + portaSaida;
     }
 }

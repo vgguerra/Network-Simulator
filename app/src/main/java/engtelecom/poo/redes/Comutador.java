@@ -25,11 +25,8 @@ public class Comutador extends Dispositivo {
      * @param mac
      */
     public void addDevice(int index, MacAddress mac) {
-        if (index >= 0 && index < macs.length) {
             macs[index] = mac;
-        } else {
-            throw new IndexOutOfBoundsException("Índice fora dos limites do número de portas do comutador.");
-        }
+
     }
 
     /**
@@ -38,13 +35,8 @@ public class Comutador extends Dispositivo {
      * @return
      */
     public MacAddress getDeviceMac(int index) {
-        if (index >= 0 && index < macs.length) {
             return macs[index];
-        } else {
-            throw new IndexOutOfBoundsException("Índice fora dos limites do número de portas do comutador.");
-        }
+
     }
-
-
 
 }

@@ -24,11 +24,7 @@ public class Roteador extends Dispositivo{
      * @param portaSaida
      */
     public void addRota(int index,Ip ip,int portaSaida){
-        if(index >= 0 && index < rotas.length){
-            rotas[index] = new Rotas(ip,portaSaida);
-        } else{
-            throw new IndexOutOfBoundsException("Índice fora dos limites do número de rotas existente na rede");
-        }
+        rotas[index] = new Rotas(ip,portaSaida);
     }
 
     /**
@@ -37,11 +33,7 @@ public class Roteador extends Dispositivo{
      * @return
      */
     public Rotas getRota(int index){
-        if (index >= 0 && index < rotas.length) {
-            return rotas[index];
-        } else {
-            throw new IndexOutOfBoundsException("Índice fora dos limites do número de portas do comutador.");
-        }
+        return rotas[index];
     }
 
 }
