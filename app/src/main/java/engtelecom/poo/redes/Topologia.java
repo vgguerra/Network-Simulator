@@ -1,5 +1,11 @@
 package engtelecom.poo.redes;
 
+import engtelecom.poo.redes.dispositivos.Comutador;
+import engtelecom.poo.redes.dispositivos.Firewall;
+import engtelecom.poo.redes.dispositivos.Roteador;
+import engtelecom.poo.redes.enums.Ip;
+import engtelecom.poo.redes.enums.MacAddress;
+
 /**
  * Classe que irá iniciar nossa topologia
  *
@@ -10,39 +16,41 @@ public class Topologia {
     /**
      * Atributo que irá representar o comutador 1 dentro da topologia
      */
-    private Comutador comutador1;
+    private final Comutador comutador1;
 
     /**
      * Atributo que irá representar o comutador 2 dentro da topologia
      */
-    private Comutador comutador2;
+    private final Comutador comutador2;
 
     /**
      * Atributo que irá representar o roteador dentro da topologia
      */
-    private Roteador roteador;
+    private final Roteador roteador;
 
     /**
      * Atributo que irá representar o firewall dentro da topologia
      */
-    private Firewall firewall;
-
+    private final Firewall firewall;
 
     /**
      * Método constutor que irá instanciar todas os objetos necessário e subir a topologia conforme solicitado no exercíco
      */
     public Topologia(){
-        this.comutador1 =  new Comutador(Ip.IpC1, MacAddress.A1);
-        this.comutador2 = new Comutador(Ip.IpC2, MacAddress.B1);
+        this.comutador1 =  new Comutador(Ip.IpC1, MacAddress.C1);
+        this.comutador2 = new Comutador(Ip.IpC2, MacAddress.C2);
         this.roteador = new Roteador(Ip.IpR,MacAddress.R);
         this.firewall = new Firewall(Ip.IpF,MacAddress.F);
+
 
         for(int i = 0; i < 4; i ++){
             comutador1.addDevice(i,MacAddress.getByIndex(i+1));
         }
+        comutador1.addDevice(4,MacAddress.R);
         for (int i = 6; i  < 10 ; i++) {
             comutador2.addDevice(i-6,MacAddress.getByIndex(i));
         }
+        comutador2.addDevice(4,MacAddress.R);
 
 
         this.roteador.addRota(0,Ip.IpC1,5);
@@ -71,11 +79,12 @@ public class Topologia {
         return comutador2.getDeviceMac(index);
     }
 
+
     /**
      * Irá retornar o endereço MAC do comutador 1
      * @return MacAddress
      */
-    public MacAddress getMacComuta1() {
+    public String getMacComuta1() {
         return comutador1.getMac();
     }
 
@@ -83,7 +92,7 @@ public class Topologia {
      * Irá retornar o endereço MAC do comutador 2
      * @return MacAddress
      */
-    public MacAddress getMacComuta2() {
+    public String getMacComuta2() {
         return comutador2.getMac();
     }
 
@@ -92,48 +101,48 @@ public class Topologia {
      * Irá retornar o endereço mac do roteador
      * @return MacAddres
      */
-    public MacAddress getMacRoteador(){
-        return roteador.mac;
+    public String getMacRoteador(){
+        return roteador.getMac();
     }
 
     /**
      * Irá retornar o endereço mac do firewall
      * @return MacAddres
      */
-    public MacAddress getMacFirewall(){
-        return firewall.mac;
+    public String getMacFirewall(){
+        return firewall.getMac();
     }
 
     /**
      * Irá retornar o Ip do comutador 1
-     * @return Ip
+     * @return String
      */
-    public Ip getIpComuta1() {
+    public String getIpComuta1() {
         return comutador1.getIp();
     }
 
     /**
      * Irá retornar o Ip do comutador 2
-     * @return Ip
+     * @return String
      */
-    public Ip getIpComuta2() {
+    public String getIpComuta2() {
         return comutador2.getIp();
     }
 
     /**
      * Irá retornar o IP do roteador
-     * @return Ip
+     * @return String
      */
-    public Ip getIpRoteador(){
-        return roteador.ip;
+    public String getIpRoteador(){
+        return roteador.getIp();
     }
 
     /**
      * Irá retornar o IP do firewall
      * @return Ip
      */
-    public Ip getIpFirewall(){
-        return firewall.ip;
+    public String getIpFirewall(){
+        return firewall.getIp();
     }
 
     /**
@@ -143,6 +152,15 @@ public class Topologia {
      */
     public Rotas getRotas(int index){
         return roteador.getRota(index);
+    }
+
+    /**
+     * Método que irá retornar o IP de uma determinada rota do roteador
+     * @param index int
+ * @return String
+     */
+    public String getIpRota(int index){
+        return roteador.getRota(index).getIp();
     }
 
     /**
@@ -181,5 +199,25 @@ public class Topologia {
     public void deleteRule(int index){
         this.firewall.deleteRule(index);
     }
+
+    /**
+     * Método que irá verificar se as informações de um determinado pacote são iguais as solicitadas por uma regra
+     * @param regras Regras
+     * @param index int
+     * @return boolean
+     */
+    public boolean compareRules(Regras regras,int index) {
+        return firewall.compareRules(regras,index);
+    }
+
+    /**
+     * Método que irá retornar a ação de uma determinada regra
+     * @param index int
+     * @return String
+     */
+    public String getAction(int index){
+        return firewall.getRule(index).getAcao();
+    }
+
 
 }

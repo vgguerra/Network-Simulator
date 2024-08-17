@@ -1,5 +1,7 @@
 package engtelecom.poo.redes;
 
+import java.util.Objects;
+
 /**
  * Classe que irá representar as regras que o firewall tem e indicar qual será a ação
  *
@@ -11,34 +13,34 @@ public class Regras {
     /**
      * Atributo que irá representar o Ip de origem de uma regra
      */
-    private String  ipOrigem;
+    private final String  ipOrigem;
 
     /**
      * Atributo que irá representar o Ip de destino de uma regra
      */
-    private String  ipDestino;
+    private final String ipDestino;
 
     /**
      * Aributo que irá representar a ação que deve ser realizada
      */
-    private String  acao;
+    private final String  acao;
 
     /**
      * Atributo que irá representar a porta de origem de uma regra
      */
-    private int portaOrigem;
+    private final int portaOrigem;
 
     /**
      * Atributo que irá representar a porta de destino de uma regra
      */
-    private int portaDestino;
+    private final int portaDestino;
 
     /**
      * Método construtor que irá setar as informações de uma regra
-     * @param ipOrigem
-     * @param ipDestino
-     * @param portaOrigem
-     * @param portaDestino
+     * @param ipOrigem String
+     * @param ipDestino String
+     * @param portaOrigem int
+     * @param portaDestino iint
      */
     public Regras(String ipOrigem,String ipDestino,int portaOrigem,int portaDestino,String acao) {
         this.ipOrigem = ipOrigem;
@@ -48,41 +50,37 @@ public class Regras {
         this.acao = acao;
     }
 
+    /**
+     * Método toString que irá retornar as informações de uma regra
+     * @return String
+     */
     @Override
     public String toString() {
         return "IP de orgiem: " + this.ipOrigem + " || IP de destino: " + this.ipDestino + " || Porta de origem: " + this.portaOrigem + " || Porta de destino: " + this.portaDestino + " || Ação: " + this.acao;
     }
 
     /**
-     * Métodos get do Ip de origem
-     * @return String
-     */
-    public String getIpOrigem() {
-        return ipOrigem;
-    }
-
-    /**
-     * Métodos get do Ip de destino
-     * @return String
-     */
-    public String getIpDestino() {
-        return ipDestino;
-    }
-
-    /**
-     * Métodos get da porta de Origem
+     * Método get da ação de uma regra
      * @return int
      */
-    public int getPortaOrigem() {
-        return portaOrigem;
+    public String getAcao() {
+        return this.acao;
     }
 
     /**
-     * Métodos get da porta de destino
-     * @return int
+     * Método que irá verificar se as informações de um determinado pacote são iguais as solicitadas por uma regra
+     * @param obj Object
+     * @return boolean
      */
-    public int getPortaDestino() {
-        return portaDestino;
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj){
+            return true;
+        }
+        if(obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Regras regras = (Regras) obj;
+        return ipDestino.equalsIgnoreCase(regras.ipDestino) && ipOrigem.equalsIgnoreCase(regras.ipOrigem) && portaOrigem == regras.portaOrigem && portaDestino == regras.portaDestino;
     }
-
 }

@@ -1,4 +1,8 @@
-package engtelecom.poo.redes;
+package engtelecom.poo.redes.dispositivos;
+
+import engtelecom.poo.redes.enums.Ip;
+import engtelecom.poo.redes.enums.MacAddress;
+import engtelecom.poo.redes.Regras;
 
 import java.util.ArrayList;
 
@@ -16,8 +20,8 @@ public class Firewall extends Dispositivo {
 
     /**
      * Método construtor onde será indicado o IP e o MAC do dispositivo e instanciado uma tabela de regras
-     * @param ip
-     * @param mac
+     * @param ip Ip
+     * @param mac MacAddress
      */
     public Firewall(Ip ip, MacAddress mac) {
         super(ip, mac);
@@ -57,6 +61,15 @@ public class Firewall extends Dispositivo {
         return this.regras.size();
     }
 
+    /**
+     * Método que irá comparar se uma regra e um pacote são iguais
+     * @param regras Regras
+     * @param index int
+     * @return boolean
+     */
+    public boolean compareRules(Regras regras,int index) {
+        return getRule(index).equals(regras);
+    }
 
 
 }

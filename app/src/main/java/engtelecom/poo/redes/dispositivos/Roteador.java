@@ -1,5 +1,14 @@
-package engtelecom.poo.redes;
+package engtelecom.poo.redes.dispositivos;
 
+import engtelecom.poo.redes.enums.Ip;
+import engtelecom.poo.redes.enums.MacAddress;
+import engtelecom.poo.redes.Rotas;
+
+/**
+ * Classe que irá representar um roteador dentro de nossa topologia
+ *
+ * @author Victor Guerra
+ */
 public class Roteador extends Dispositivo{
 
     /**
@@ -9,8 +18,8 @@ public class Roteador extends Dispositivo{
 
     /**
      * Método construtor da classe, onde será indicado o IP e o MAC do dispositivo e instanciado uma tabela de rotas, de tamanho estático 3, que é o número de redes conhecidas
-     * @param ip
-     * @param mac
+     * @param ip Ip
+     * @param mac MacAddres
      */
     public Roteador(Ip ip, MacAddress mac) {
         super(ip, mac);
@@ -19,9 +28,9 @@ public class Roteador extends Dispositivo{
 
     /**
      * Método que adiciona uma rota ao vetor de rotas de nosso roteador
-     * @param index
-     * @param ip
-     * @param portaSaida
+     * @param index int
+     * @param ip Ip
+     * @param portaSaida int
      */
     public void addRota(int index,Ip ip,int portaSaida){
         rotas[index] = new Rotas(ip,portaSaida);
@@ -29,11 +38,13 @@ public class Roteador extends Dispositivo{
 
     /**
      * Irá retornar a rede e a porta de saída associado na posição index do vetor de rotas de nosso roteador
-     * @param index
-     * @return
+     * @param index int
+     * @return Rotas
      */
     public Rotas getRota(int index){
         return rotas[index];
     }
+
+
 
 }

@@ -1,18 +1,24 @@
-package engtelecom.poo.redes;
+package engtelecom.poo.redes.dispositivos;
 
-import java.util.ArrayList;
+import engtelecom.poo.redes.enums.Ip;
+import engtelecom.poo.redes.enums.MacAddress;
 
+/**
+ * Classe que irá representar um comutador dentro de nossa topologia
+ *
+ * @author Victor Guerra
+ */
 public class Comutador extends Dispositivo {
 
     /**
      * Tabela de endereços macs onde cada dispositivo esta associado
      */
-    private MacAddress[] macs;
+    private final MacAddress[] macs;
 
     /**
      * Método construtor que irá instanciar o vetor de tamanho 12(número de portas) do comutador e indicar o IP e mac do comutador.
-     * @param ip
-     * @param mac
+     * @param ip Ip
+     * @param mac MacAddress
      */
     public Comutador(Ip ip, MacAddress mac) {
         super(ip, mac);
@@ -21,8 +27,8 @@ public class Comutador extends Dispositivo {
 
     /**
      * Método que adiciona um dispositivo no comutador
-     * @param index
-     * @param mac
+     * @param index int
+     * @param mac MacAddres
      */
     public void addDevice(int index, MacAddress mac) {
             macs[index] = mac;
@@ -31,8 +37,8 @@ public class Comutador extends Dispositivo {
 
     /**
      * Método que irá retornar o dispositivo conectado em um porta x(index)
-     * @param index
-     * @return
+     * @param index int
+     * @return MacAddress
      */
     public MacAddress getDeviceMac(int index) {
             return macs[index];
