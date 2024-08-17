@@ -30,14 +30,12 @@ classDiagram
        - MacAddress[] macs
 
        + addDevice(int index, MacAddress mac) void
-       + getDeviceMac(int index) MacAddress
    }
    
    class Roteador{
        - Rotas[] rotas
        
        + addRota(int index,Ip ip,int portaSaida) void
-       + getRota(int index) Rotas
    }
    
    class Firewall{
@@ -45,8 +43,6 @@ classDiagram
        
        + addRule(Regras regras) void
        + deleteRule(int index) void
-       + getRule(int index) Regras
-       + getNumRules() int
        + compareRules(Regras regras,int index) boolean
    }
    
@@ -58,14 +54,11 @@ classDiagram
        - String acao
        
        + equals(Object obj) boolean
-       + getAcao() String
    }
    
    class Rotas{
        - Ip ip
        - int portaSaida
-
-       + getIp() String
    }
    
    class Topologia{
