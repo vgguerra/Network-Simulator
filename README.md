@@ -74,20 +74,6 @@ classDiagram
        - Roteador roteador
        - Firewall firewall
        
-       + getMacDeviceComuta1(int index) MacAddress
-       + getMacDeviceComuta2(int index) MacAddress
-       + getMacComuta1() String
-       + getMacComuta2() String
-       + getMacRoteador() String
-       + getMacFirewall() String
-       + getIpComuta1() String
-       + getIpComuta2() String
-       + getIpRoteador() String
-       + getIpFirewall() String
-       + getRotas(int index) Rotas
-       + getIpRota(int index) String
-       + getRules(int index) Regras
-       + getNumRules() int
        + createRule(String ipOrigem, String ipDestino,int portaOrigem, int portaDestino,String acao) void
        + deleteRule(int index) void
        + compareRules(Regras regras,int index) boolean
