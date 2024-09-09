@@ -1,7 +1,7 @@
 # Projeto 2 POO JAVA - Simulador de redes
 
 ## Objetivo do projeto
-Neste projeto, nosso objetivo foi o de criar uma toplogia de rede estática definada nos requisitos do projeto e que fosse possível realizar as seguintes funcionalidades:
+Neste projeto, nosso objetivo foi o de criar uma toplogia de rede estática definada nos requisitos do projeto, disponível no PDF para baixar na raiz do repositório, com intuito de trabalhar os conceitos da Orientação da Objeto. Neste projeto, abstraimos muitos coneceitos reais de redes, pois este não tera o foco principal do projeto. Dentro dos objetivos do projeto, deveriamos criar uma aplicação onde fosse possível realizar as seguintes funcionalidades:
 
 - Listar dispositivos por tipo
 - Listar dispositivos por rede
